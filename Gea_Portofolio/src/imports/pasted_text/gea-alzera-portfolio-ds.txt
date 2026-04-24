@@ -1,0 +1,349 @@
+=============================================================
+FIGMA — COMPLETE PORTFOLIO UI/UX DESIGN SYSTEM PROMPT
+=============================================================
+
+[DESIGN BRIEF]
+Create a comprehensive Figma design system and complete 
+UI/UX mockup for "Gea Alzera" — a Junior Risk Management 
+Specialist personal portfolio website. The design must be 
+production-ready, futuristic, dark-themed, and premium-quality 
+suitable for a senior finance professional.
+
+[FILE STRUCTURE — FIGMA PAGES]
+Page 1: 🎨 Design System (Tokens, Components, Typography)
+Page 2: 🖥️ Desktop Frames (1440px)
+Page 3: 📱 Mobile Frames (390px — iPhone 15 Pro)
+Page 4: 📋 Tablet Frames (768px — iPad)
+Page 5: ⚡ Animation Specs & Prototype Flow
+Page 6: 📐 Grid & Layout Guidelines
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 1: DESIGN SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COLOR TOKENS (as Figma Variables):
+── Background Palette ──
+  bg/base: #050A14
+  bg/surface: #0D1B2A
+  bg/elevated: #132337
+  bg/overlay: rgba(5,10,20,0.85)
+
+── Brand/Accent Palette ──
+  brand/primary: #00D4FF (Electric Cyan)
+  brand/secondary: #7B2FBE (Deep Violet)
+  brand/tertiary: #00FFA3 (Neon Mint)
+  brand/danger: #FF4D4D (Risk Red)
+  brand/warning: #FFB347 (Amber)
+  brand/gradient-1: linear 135° #00D4FF→#7B2FBE
+  brand/gradient-2: linear 135° #7B2FBE→#FF4D4D
+
+── Text Palette ──
+  text/primary: #E8F4FD
+  text/secondary: #7C9CB8
+  text/tertiary: #3D5A78
+  text/inverse: #050A14
+  text/accent: #00D4FF
+
+── Border/Stroke ──
+  stroke/default: rgba(0,212,255,0.15)
+  stroke/hover: rgba(0,212,255,0.6)
+  stroke/strong: rgba(0,212,255,0.9)
+
+TYPOGRAPHY SYSTEM:
+Family 1: Space Grotesk — Import from Google Fonts
+  Display XL: 72/80px, Weight 700, LS -2px
+  Display L: 56/64px, Weight 700, LS -1.5px
+  Heading 1: 48/56px, Weight 700, LS -1px
+  Heading 2: 36/44px, Weight 600, LS -0.5px
+  Heading 3: 24/32px, Weight 600, LS 0px
+
+Family 2: Inter — Import from Google Fonts
+  Body L: 18/28px, Weight 400
+  Body M: 16/26px, Weight 400
+  Body S: 14/22px, Weight 400
+
+Family 3: JetBrains Mono — Import from Google Fonts
+  Code M: 14/22px, Weight 500, LS 0.02em
+  Label: 12/16px, Weight 500, LS 0.1em, UPPERCASE
+
+SPACING SCALE (4px base):
+  space/2: 2px
+  space/4: 4px
+  space/8: 8px
+  space/12: 12px
+  space/16: 16px
+  space/20: 20px
+  space/24: 24px
+  space/32: 32px
+  space/40: 40px
+  space/48: 48px
+  space/64: 64px
+  space/80: 80px
+  space/96: 96px
+  space/128: 128px
+
+BORDER RADIUS TOKENS:
+  radius/sm: 8px
+  radius/md: 16px
+  radius/lg: 24px
+  radius/xl: 32px
+  radius/pill: 999px
+  radius/hex: (clip-path hexagon)
+
+SHADOW/EFFECT TOKENS:
+  shadow/glow-cyan: 0 0 40px rgba(0,212,255,0.3)
+  shadow/glow-violet: 0 0 40px rgba(123,47,190,0.3)
+  shadow/card: 0 8px 32px rgba(0,0,0,0.4)
+  shadow/card-hover: 0 16px 48px rgba(0,212,255,0.15)
+  blur/glass: backdrop-filter blur(20px) saturate(180%)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COMPONENT LIBRARY (Figma Components)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BUTTON COMPONENTS (with variants):
+  Component: Button/Primary
+    States: Default | Hover | Pressed | Disabled
+    Default: 
+      Fill: gradient brand/gradient-1
+      Padding: 16px 40px
+      Radius: radius/pill
+      Typography: Body M / Weight 600 / text/inverse
+      Icon slot: optional trailing icon
+    Hover: scale 1.04, shadow/glow-cyan added
+  
+  Component: Button/Ghost
+    States: Default | Hover | Pressed
+    Default:
+      Fill: transparent
+      Stroke: 1.5px stroke/strong
+      Text color: text/accent
+    Hover: Fill animates (show as solid cyan fill in hover state)
+  
+  Component: Button/Icon
+    Size: 48x48px circle
+    Fill: bg/surface
+    Stroke: 1px stroke/default
+    Icon: 20x20px (white)
+    Hover: stroke changes to stroke/hover
+
+CARD COMPONENTS:
+  Component: Card/Project
+    Width: 560px (desktop), 100% (mobile)
+    Fill: bg/surface (glassmorphism style)
+    Stroke: 1px stroke/default
+    Radius: radius/lg
+    Hover state: stroke/hover + translateY(-8px)
+    
+    Internal layout:
+    ├── Image area: 560x220px, radius top corners
+    │   ├── Gradient overlay on image bottom
+    │   └── Category badge (top-left, pill shape)
+    ├── Content area: padding 24px
+    │   ├── Title: Heading 3
+    │   ├── Description: Body S, text/secondary, 3 lines max
+    │   ├── Tags row: pill badges with stroke
+    │   └── Buttons row: gap 12px
+  
+  Component: Card/Tool
+    Size: auto height, min 160px
+    Fill: glassmorphism bg/surface + backdrop blur
+    Stroke: 1px stroke/default
+    Radius: radius/md
+    
+    Internal layout:
+    ├── Icon: 64x64px (auto layout center)
+    ├── Tool name: Body L / weight 600
+    └── Category: Label / text/secondary
+
+  Component: Card/Stat
+    Size: 200x100px compact card
+    Fill: rgba(13,27,42,0.9)
+    Stroke: 1px stroke/default
+    Radius: radius/md
+    
+    Shows: Stat number (large cyan) + Label
+
+NAVIGATION COMPONENT:
+  Component: Navbar
+    Width: 100%, Height: 72px
+    Fill: bg/overlay + backdrop blur
+    Bottom border (scrolled state): 1px stroke/default
+    
+    Slots:
+    ├── Left: Logo text "GA" — JetBrains Mono 20px bold, 
+    │         text-shadow glow cyan
+    └── Right: Nav links row — gap 40px
+               Each link: Body M / 500 weight / text/secondary
+               Active/hover state: text/accent + underline
+
+BADGE/TAG COMPONENTS:
+  Component: Badge/Category (for project cards)
+    Fill: rgba of project color (30% opacity)
+    Stroke: 1px same color full opacity
+    Text: Label size, uppercase, matching color
+    Radius: radius/pill
+    Padding: 6px 16px
+  
+  Component: Tag/Skill (for about section)
+    Fill: rgba(0,212,255,0.08)
+    Stroke: 1px stroke/default
+    Text: Label / text/accent
+    Hover: Fill to rgba(0,212,255,0.15)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 2: DESKTOP FRAMES (1440px width)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Frame naming: Desktop/01-Navbar through Desktop/06-Footer
+Container max-width: 1200px centered with 120px gutters
+
+FRAME 01 — HERO (1440x900px)
+  Background: bg/base + particle dots annotation layer
+  Grid: 12-column, 80px gutter
+  
+  Layout Grid (12 col):
+    Columns 1-7: Hero left content
+    Columns 8-12: Profile image
+  
+  Left Content Z-order (bottom to top):
+    1. Eyebrow text: "RISK MANAGEMENT SPECIALIST"
+       Position: top of content block
+       Style: Label / brand/primary / JetBrains Mono
+    
+    2. H1 Line 1: "Halo, saya"
+       Style: Display XL / text/primary / Space Grotesk
+    
+    3. H1 Line 2: "Gea Alzera" 
+       Style: Display XL / gradient fill (brand/gradient-1)
+       Annotation: "Typed.js animation here"
+    
+    4. Subtitle: "Junior Risk Management Specialist"
+       Style: Heading 2 / gradient text brand/gradient-1
+    
+    5. Description: Max 2 lines body text
+       Style: Body L / text/secondary
+    
+    6. CTA Row: Button/Primary + Button/Ghost
+       Gap: 16px
+    
+    7. Social Row: 4x Button/Icon components
+       Gap: 12px
+  
+  Right Content:
+    1. Profile photo in hexagonal clip-path
+       Size: 400x460px hex frame
+       Animated gradient border: annotation layer
+       Glow behind: ellipse 300x300, blur 80px, 
+       fill brand/primary opacity 20%
+    
+    2. Floating Stat Card (overlapping bottom-left of hex):
+       Uses Card/Stat component
+       Content: "4 Projects | ISO 31000 | Basel III"
+
+  Bottom Center:
+    Scroll indicator: Arrow down icon + "Scroll to explore" text
+    Opacity: 40%
+
+FRAME 02 — TENTANG (1440x800px)
+  Background: bg/surface
+  Section top: SVG wave divider shape (color bg/surface)
+  
+  Grid: 2-column equal split (560px each, 80px gap)
+  
+  Left column: Profile photo
+    Border radius: radius/lg
+    Floating badge overlay: 
+      "✓ ISO 31000 Certified Approach"
+      Uses Badge/Category with mint color
+  
+  Right column (flex column, gap 24px):
+    1. Eyebrow: Label / brand/primary
+    2. Heading: "Ahli Manajemen Risiko yang Berfokus pada Data"
+       Style: Heading 1
+    3. Body paragraph: Gea's full bio text
+    4. Skills grid: 3-column tag grid, Tag/Skill components
+       ISO31000 | BaselII | BaselIII | IFRS9 | 
+       CreditRisk | ClimateRisk | Python | FraudDetection
+    5. CTA: Button/Ghost "Lihat Proyek Saya →"
+
+FRAME 03 — TOOLS (1440x600px)
+  Background: bg/base
+  Heading: "Tools yang Saya Kuasai" — Heading 1 centered
+  
+  Grid: 3 columns, 6 cards
+  Each card: Card/Tool component
+  Cards order: Google Colab | Microsoft Office | VS Code | 
+               GitHub | Canva | Draw.io
+
+FRAME 04 — PROJECTS (1440x1000px)
+  Background: bg/surface
+  Heading area: centered, Heading 1 + Body text subtitle
+  
+  Grid: 2x2, Card/Project components
+  Project order: AML | Climate | Credit Scoring | ISO 31000
+
+FRAME 05 — FOOTER (1440x320px)
+  Background: bg/base
+  Top border: 1px stroke/default
+  
+  Centered stack:
+    1. "Gea Alzera" — Display L / gradient fill
+    2. "Junior Risk Management Specialist" — Body L / secondary
+    3. Social row: 4x Button/Icon
+    4. Copyright line — Body S / text/tertiary
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 3: MOBILE FRAMES (390px)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Same sections, reorganized for mobile:
+  - Navbar: hamburger right, logo left
+  - Hero: stacked layout (image top, text below)
+  - Projects: 1-column grid
+  - Tools: 2-column grid
+  All padding reduced to space/24
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE 5: ANIMATION & PROTOTYPE SPECS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Document all animations with annotations:
+
+SCROLL ANIMATIONS — annotate each frame:
+  ► Section headings: 
+    Before: opacity 0, translateX(-60px)
+    After: opacity 1, translateX(0)
+    Easing: cubic-bezier(0.22, 1, 0.36, 1)
+    Duration: 800ms
+    Trigger: 15% viewport intersection
+  
+  ► Text body / paragraphs:
+    Before: opacity 0, translateY(40px)
+    After: opacity 1, translateY(0)
+    Stagger: 100ms between lines
+    Duration: 600ms
+  
+  ► Cards:
+    Before: opacity 0, translateY(60px)
+    After: opacity 1, translateY(0)
+    Stagger: 150ms per card
+    Duration: 700ms
+    Easing: cubic-bezier(0.34, 1.56, 0.64, 1) [spring]
+  
+  ► Key terms / numbers:
+    Animate: color from text/tertiary → brand/primary
+    Duration: 400ms as element enters view
+
+FIGMA PROTOTYPE CONNECTIONS:
+  - Navbar links → scroll to respective frames (Smart Animate)
+  - CTA "Lihat Portfolio" → scroll to Project frame
+  - Hover interactions on all interactive components
+  - Mobile: hamburger → overlay menu (Smart Animate, slide)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXPORT SPECIFICATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Icons: SVG export
+Images: 2x PNG for retina
+Prototype: Share link for developer handoff
+CSS: Enable Figma Dev Mode for CSS export
+Inspect panel: All spacing, color tokens visible
+=============================================================
